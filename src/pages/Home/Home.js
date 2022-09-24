@@ -9,7 +9,7 @@ const Home = () => {
     <main>
       <Hero />
       <section>
-        <h2 className={classes["sry-only"]}>Features</h2>
+        <h2 className={classes["sr-only"]}>Features</h2>
         <div className={classes.features}>
           {mockedFeatures.map((feature, index) => (
             <Feature element={feature} key={index} />
