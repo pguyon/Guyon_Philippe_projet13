@@ -34,7 +34,7 @@ const userProfile = async (userProfileData, token) => {
   };
 
   const response = await instance.put(`/profile`, userProfileData, config);
-  return response.data;
+  return response.data.body;
 };
 
 const apiService = {
