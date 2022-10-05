@@ -40,6 +40,22 @@ const userProfile = async (token) => {
   return response.data.body;
 };
 
+const userUpdate = async (firstname, lastname, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await instance.put(
+    `/profile`,
+    { firstname, lastname },
+    config
+  );
+
+  return response.data.body;
+};
+
 const logout = () => {
   localStorage.removeItem("user");
 };
@@ -47,6 +63,7 @@ const logout = () => {
 const apiService = {
   userLogin,
   userProfile,
+  userUpdate,
   logout,
 };
 
