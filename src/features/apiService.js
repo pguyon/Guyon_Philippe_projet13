@@ -40,6 +40,16 @@ const userProfile = async (token) => {
   return response.data.body;
 };
 
+
+
+/**
+ * It takes in a firstname, lastname, and token, and then it makes a PUT request to the /profile
+ * endpoint with the firstname, lastname, and token in the request body.
+ * @param {string} - Firstname
+ * @param {string} - Lastname
+ * @param {string} - the token that is returned from the login function
+ * @returns The response.data.body is being returned.
+ */
 const userUpdate = async (firstname, lastname, token) => {
   const config = {
     headers: {
