@@ -25,11 +25,11 @@ const userLogin = async (email, password) => {
 
 /**
  * It's a function that takes in two parameters, userDataProfile and token, and returns a response.data
- * object. 
+ * object.
  * @param {string} - the token that is returned from the login function
  * @returns The response.data is the data that is being returned from the server.
  */
-const userProfile = async ( token) => {
+const userProfile = async (token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
