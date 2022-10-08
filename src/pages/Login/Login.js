@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from "./Login.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
-import apiService from "../../features/apiService";
+import apiService from "../../services/authService";
 
 const Login = () => {
   const [email, setEmail] = useState("");
