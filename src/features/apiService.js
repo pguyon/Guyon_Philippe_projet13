@@ -17,9 +17,10 @@ const userLogin = async (email, password) => {
     password,
   });
 
-  if (response.ok) {
-    localStorage.setItem("user", JSON.stringify(response.data));
+  if (response.status === 200) {
+    localStorage.setItem("user", JSON.stringify(response.data.body.token));
   }
+  console.log(response.data);
   return response.data;
 };
 
@@ -39,8 +40,6 @@ const userProfile = async (token) => {
   const response = await instance.post(`/profile`, config);
   return response.data.body;
 };
-
-
 
 /**
  * It takes in a firstname, lastname, and token, and then it makes a PUT request to the /profile
