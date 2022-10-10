@@ -33,13 +33,21 @@ const userLogin = async (email, password) => {
 const userProfile = async (token) => {
   const config = {
     headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    credentials: true,
   };
-
-  const response = await instance.post(`/profile`,{}, config);
-  return response.data.body;
+  try {
+    const response = await instance.post(`/profile`,{}, config);
+    const data = await response.data.body;
+    if (data) {
+      console.log(data.token);
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 /**
