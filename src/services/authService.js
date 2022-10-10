@@ -35,9 +35,10 @@ const userProfile = async (token) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    credentials: true,
   };
 
-  const response = await instance.post(`/profile`, config);
+  const response = await instance.post(`/profile`,{}, config);
   return response.data.body;
 };
 
