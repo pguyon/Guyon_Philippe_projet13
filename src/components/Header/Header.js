@@ -4,8 +4,14 @@ import Logo from "../../assets/argentBankLogo.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import apiService from "../../services/authService";
 
 const Header = () => {
+  const token = localStorage.getItem("user");
+
+  const logoutHandler = () => {
+    apiService.logout();
+  };
   return (
     <nav className={classes["main-nav"]}>
       <Link to="/" className={classes["main-nav-logo"]}>
@@ -16,10 +22,22 @@ const Header = () => {
         />
         <h1 className={classes["sr-only"]}>Argent Bank</h1>
       </Link>
-      <Link to="/login" className={classes["main-nav-item"]}>
-        <FontAwesomeIcon icon={faCircleUser} />
-        <span>Sign In</span>
-      </Link>
+
+      {token ? (
+        <Link
+          to="/"
+          className={classes["main-nav-item"]}
+          onClick={logoutHandler}
+        >
+          <FontAwesomeIcon icon={faCircleUser} />
+          <span>Logout</span>
+        </Link>
+      ) : (
+        <Link to="/login" className={classes["main-nav-item"]}>
+          <FontAwesomeIcon icon={faCircleUser} />
+          <span>Sign In</span>
+        </Link>
+      )}
     </nav>
   );
 };
