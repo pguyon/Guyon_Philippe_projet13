@@ -9,7 +9,7 @@ function Profile() {
   if (!token) {
     return <p>Vous devez être connecté pour accèder à cette page</p>;
   } else {
-    return <div>Profile</div>;
+    return <div>Vous êtes connecté</div>;
   }
 }
 
