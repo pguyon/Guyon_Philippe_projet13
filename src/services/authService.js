@@ -17,11 +17,10 @@ export const userLogin = async (email, password) => {
       email,
       password,
     });
+    const token = await response.data.body.token;
     if (response.status === 200) {
-      localStorage.setItem("user", JSON.stringify(response.data.body.token));
+      return token;
     }
-    console.log(response.data);
-    return response.data;
   } catch (error) {
     console.log(error);
   }
@@ -45,7 +44,7 @@ export const userProfile = async (token) => {
     const response = await instance.post(`/profile`, {}, config);
     const data = await response.data.body;
     if (data) {
-      console.log(data.token);
+      console.log(data);
       return data;
     }
   } catch (error) {
