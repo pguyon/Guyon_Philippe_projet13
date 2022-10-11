@@ -11,7 +11,7 @@ const instance = axios.create({
  * @param {string} - user's password
  * @returns The response.data is being returned.
  */
-const userLogin = async (email, password) => {
+export const userLogin = async (email, password) => {
   try {
     const response = await instance.post(`/login`, {
       email,
@@ -33,7 +33,7 @@ const userLogin = async (email, password) => {
  * @param {string} - the token that is returned from the login function
  * @returns The response.data is the data that is being returned from the server.
  */
-const userProfile = async (token) => {
+export const userProfile = async (token) => {
   const config = {
     headers: {
       Accept: "application/json",
@@ -61,31 +61,24 @@ const userProfile = async (token) => {
  * @param {string} - the token that is returned from the login function
  * @returns The response.data.body is being returned.
  */
-const userUpdate = async (firstname, lastname, token) => {
+export const userUpdate = async (firstName, lastName, token) => {
   const config = {
     headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   };
 
-  const response = await instance.put(
-    `/profile`,
-    { firstname, lastname },
-    config
-  );
-
-  return response.data.body;
+  try {
+    const response = await instance.put("/profile", {
+      config,
+      data: JSON.stringify({ firstName, lastName }),
+    });
+    if (response.status === 200) {
+      return response.status;
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
-
-const logout = () => {
-  localStorage.removeItem("userToken");
-};
-
-const apiService = {
-  userLogin,
-  userProfile,
-  userUpdate,
-  logout,
-};
-
-export default apiService;
