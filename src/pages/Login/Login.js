@@ -1,16 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Login.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
-import apiService from "../../services/authService";
+import { userLogin, userProfile } from "../../services/authService";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserProfile } from "../../store/slice/userSlice";
+import { login } from "../../store/slice/loginSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isError, setIsError] = useState(false);
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
 
-  const submitHandler = (e) => {
+  const isLogged = useSelector((state) => state.login.isLogged);
+
+  useEffect(() => {
+    if (isLogged) return navigate("/profile");
+  }, [isLogged, navigate]);
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    apiService.userLogin(email, password);
+    const token = await userLogin(email, password);
+    if (token) {
+      dispatch(login(token));
+      const userData = await getUserProfile(token);
+      userData && dispatch(getUserProfile(userData));
+      navigate("/profile");
+    } else {
+      setIsError(true);
+    }
   };
 
   const emailHandler = (e) => {
@@ -26,7 +47,7 @@ const Login = () => {
       <section className={classes["sign-in-content"]}>
         <FontAwesomeIcon icon={faCircleUser} />
         <h1>Sign In</h1>
-        <form>
+        <form onSubmit={submitHandler}>
           <div className={classes["input-wrapper"]}>
             <label htmlFor="email">Email</label>
             <input type="text" id="email" onChange={emailHandler} />
@@ -39,10 +60,8 @@ const Login = () => {
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          {/* <a href="./user.html" className={classes["sign-in-button"]}>
-            Sign In
-          </a> */}
-          <button className={classes["sign-in-button"]} onClick={submitHandler}>
+
+          <button className={classes["sign-in-button"]} type="submit">
             Sign In
           </button>
         </form>

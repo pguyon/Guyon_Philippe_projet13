@@ -9,7 +9,7 @@ const initialState = {
   id: "",
 };
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
@@ -32,6 +32,4 @@ const userSlice = createSlice({
   },
 });
 
-export const userActions = userSlice.actions;
-
-export default userSlice;
+export const { getUserProfile, updateUserProfile } = userSlice.actions;

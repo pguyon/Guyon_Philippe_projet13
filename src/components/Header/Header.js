@@ -4,14 +4,18 @@ import Logo from "../../assets/argentBankLogo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
-import apiService from "../../services/authService";
+
+import { logout } from "../../store/slice/loginSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const Header = () => {
-  const token = localStorage.getItem("user");
+  // const token = localStorage.getItem("user");
+  const isLogged = useSelector((state) => state.login.isLogged);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const logoutHandler = () => {
-    apiService.logout();
+    dispatch(logout());
     navigate("/");
   };
   return (
@@ -25,7 +29,7 @@ const Header = () => {
         <h1 className={classes["sr-only"]}>Argent Bank</h1>
       </Link>
 
-      {token ? (
+      {isLogged ? (
         <div className={classes["main-nav-item"]} onClick={logoutHandler}>
           <FontAwesomeIcon icon={faCircleUser} />
           <span className={classes["main-nav-item"]}>Sign out</span>
