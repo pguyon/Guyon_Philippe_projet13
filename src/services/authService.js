@@ -12,16 +12,19 @@ const instance = axios.create({
  * @returns The response.data is being returned.
  */
 const userLogin = async (email, password) => {
-  const response = await instance.post(`/login`, {
-    email,
-    password,
-  });
-
-  if (response.status === 200) {
-    localStorage.setItem("user", JSON.stringify(response.data.body.token));
+  try {
+    const response = await instance.post(`/login`, {
+      email,
+      password,
+    });
+    if (response.status === 200) {
+      localStorage.setItem("user", JSON.stringify(response.data.body.token));
+    }
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
   }
-  console.log(response.data);
-  return response.data;
 };
 
 /**
@@ -39,7 +42,7 @@ const userProfile = async (token) => {
     },
   };
   try {
-    const response = await instance.post(`/profile`,{}, config);
+    const response = await instance.post(`/profile`, {}, config);
     const data = await response.data.body;
     if (data) {
       console.log(data.token);
@@ -75,7 +78,7 @@ const userUpdate = async (firstname, lastname, token) => {
 };
 
 const logout = () => {
-  localStorage.removeItem("user");
+  localStorage.removeItem("userToken");
 };
 
 const apiService = {
