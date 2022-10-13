@@ -26,8 +26,8 @@ const Login = () => {
     const token = await userLogin(email, password);
     if (token) {
       dispatch(login(token));
-      // const userData = await userProfile(token);
-      // userData && dispatch(getUserProfile(userData));
+      const userData = await userProfile(token);
+      userData && dispatch(getUserProfile(userData));
       navigate("/profile");
     } else {
       setIsError(true);

@@ -25,8 +25,8 @@ export const userSlice = createSlice({
     updateUserProfile(state, action) {
       const updateProfile = action.payload;
       const updateDate = new Date();
-      state.firstname = updateProfile.firstname;
-      state.lastname = updateProfile.lastname;
+      state.firstName = updateProfile.firstName;
+      state.lastName = updateProfile.lastName;
       state.updatedAt = updateDate.toISOString();
     },
   },

@@ -10,14 +10,10 @@ function Profile() {
     if (!isLogged) return navigate("/login");
   }, [isLogged, navigate]);
 
+  const firstName = useSelector((state) => state.user.firstName);
+  const lastName = useSelector((state) => state.user.lastName);
 
-  // const firstName = useSelector((state) => state.user.firstName);
-  // const lastName = useSelector((state) => state.user.lastName);
-
-  // console.log(firstName);
-  // console.log(lastName);
-
-  return <div>Vous êtes connecté</div>;
+  return <div>Bonjour {`${firstName} ${lastName}`}</div>;
 }
 
 export default Profile;
