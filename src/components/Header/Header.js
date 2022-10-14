@@ -3,7 +3,7 @@ import classes from "./Header.module.css";
 import Logo from "../../assets/argentBankLogo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import { faCircleUser, faSignOut } from "@fortawesome/free-solid-svg-icons";
 
 import { logout } from "../../store/slice/loginSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -31,7 +31,7 @@ const Header = () => {
 
       {isLogged ? (
         <div className={classes["main-nav-item"]} onClick={logoutHandler}>
-          <FontAwesomeIcon icon={faCircleUser} />
+          <FontAwesomeIcon icon={faSignOut} />
           <span className={classes["main-nav-item"]}>Sign out</span>
         </div>
       ) : (
