@@ -16,6 +16,17 @@
 }
 
 
+.description {
+    font-weight: 300;
+    font-size: 12px;    
+}
+
+.amount {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
 .btn{
     padding: 10px;
     background-color: #6458F5;
