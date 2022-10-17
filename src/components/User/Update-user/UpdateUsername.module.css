@@ -1,12 +1,22 @@
-form {    
+.update-form {    
     width: 40%;
     margin: auto;
 }
 
-.input-main {
-    display: flex;
-    margin: auto;
+.input-main, .btn-main {
+    display: flex;    
+    justify-content: center;
 }
+
+.update-input {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: #B8C4CE;
+    color: #B8C4CE;
+}
+
+
 
 .btn {
     padding: 10px;
@@ -16,4 +26,6 @@ form {
     width: 150px;
     text-align: center;
     border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
 }

@@ -6,8 +6,8 @@ const UdpateUsername = () => {
   const dispatch = useDispatch();
   const firstname = useSelector((state) => state.user.firstName);
   const lastname = useSelector((state) => state.user.lastName);
-  const { updateFirstname, setUpdateFirstname } = useState("");
-  const { updateLastname, setUpdateLastname } = useState("");
+  const [updateFirstname, setUpdateFirstname] = useState("");
+  const [updateLastname, setUpdateLastname] = useState("");
   // const  = useSelector(state => state.user.email)
 
   const submitHandler = () => {};
@@ -21,26 +21,25 @@ const UdpateUsername = () => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className={classes["update-form"]}>
       <div className={classes["input-main"]}>
-        <div className={classes["input-wrapper"]}>
-          <input
-            type="text"
-            id="firstname"
-            onChange={firstnameHandler}
-            defaultValue={firstname}
-            label="Change firstname"
-          />
-        </div>
-        <div className={classes["input-wrapper"]}>
-          <input
-            type="text"
-            id="lastname"
-            onChange={lastnameHandler}
-            defaultValue={lastname}
-            label="Change lastname"
-          />
-        </div>
+        <input
+          className={classes["update-input"]}
+          type="text"
+          id="firstname"
+          onChange={firstnameHandler}
+          defaultValue={firstname}
+          label="Change firstname"
+        />
+
+        <input
+          className={classes["update-input"]}
+          type="text"
+          id="lastname"
+          onChange={lastnameHandler}
+          defaultValue={lastname}
+          label="Change lastname"
+        />
       </div>
 
       <div className={classes["btn-main"]}>
