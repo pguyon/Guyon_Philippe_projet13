@@ -22,29 +22,33 @@ const UdpateUsername = () => {
 
   return (
     <form onSubmit={submitHandler}>
-      <div className={classes["input-wrapper"]}>
-        <input
-          type="text"
-          id="firstname"
-          onChange={firstnameHandler}
-          defaultValue={firstname}
-          label="Change firstname"
-        />
-      </div>
-      <div className={classes["input-wrapper"]}>
-        <input
-          type="text"
-          id="lastname"
-          onChange={lastnameHandler}
-          defaultValue={lastname}
-          label="Change lastname"
-        />
+      <div className={classes["input-main"]}>
+        <div className={classes["input-wrapper"]}>
+          <input
+            type="text"
+            id="firstname"
+            onChange={firstnameHandler}
+            defaultValue={firstname}
+            label="Change firstname"
+          />
+        </div>
+        <div className={classes["input-wrapper"]}>
+          <input
+            type="text"
+            id="lastname"
+            onChange={lastnameHandler}
+            defaultValue={lastname}
+            label="Change lastname"
+          />
+        </div>
       </div>
 
-      <button className={classes.btn} type="submit">
-        Save
-      </button>
-      <button className={classes.btn}>Cancel</button>
+      <div className={classes["btn-main"]}>
+        <button className={classes.btn} type="submit">
+          Save
+        </button>
+        <button className={classes.btn}>Cancel</button>
+      </div>
     </form>
   );
 };
