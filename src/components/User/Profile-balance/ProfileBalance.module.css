@@ -38,8 +38,8 @@
 
 @media screen and (max-width: 750px) {
     .main-balance {
-        display: block;
+       flex-direction: column;
         width: 90%;
     }
-    
+   
 }
