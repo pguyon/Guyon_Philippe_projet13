@@ -55,3 +55,18 @@
 .firstname {
   margin-right: 15px;  
 }
+
+@media screen and (max-width: 450px){
+  .main-nav{
+    display: block;
+    text-align: center;
+  }
+
+  .main-nav-logo {
+    display: block;
+  }
+
+  .main-nav-item {
+    margin: 0;
+  }
+}

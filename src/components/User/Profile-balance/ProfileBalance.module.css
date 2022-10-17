@@ -34,3 +34,12 @@
     color: white;
     cursor: pointer;
 }
+
+
+@media screen and (max-width: 750px) {
+    .main-balance {
+        display: block;
+        width: 90%;
+    }
+    
+}
