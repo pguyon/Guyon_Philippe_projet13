@@ -34,7 +34,7 @@ const Header = () => {
         <div className={classes["main-nav-item"]} onClick={logoutHandler}>
           <FontAwesomeIcon icon={faCircleUser} />
           <span className={classes.firstname}>{firstname}</span>
-          <FontAwesomeIcon classeName={classes.icon} icon={faSignOut} />
+          <FontAwesomeIcon icon={faSignOut} />
           <span className={classes["main-nav-item"]}>Sign out</span>
         </div>
       ) : (
