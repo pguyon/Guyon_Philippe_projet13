@@ -9,8 +9,9 @@ import { logout } from "../../store/slice/loginSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const Header = () => {
-  // const token = localStorage.getItem("user");
+  
   const isLogged = useSelector((state) => state.login.isLogged);
+  const firstname = useSelector((state) => state.user.firstName)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -31,7 +32,9 @@ const Header = () => {
 
       {isLogged ? (
         <div className={classes["main-nav-item"]} onClick={logoutHandler}>
-          <FontAwesomeIcon icon={faSignOut} />
+          <FontAwesomeIcon icon={faCircleUser} />
+          <span className={classes.firstname}>{firstname}</span>
+          <FontAwesomeIcon classeName={classes.icon} icon={faSignOut} />
           <span className={classes["main-nav-item"]}>Sign out</span>
         </div>
       ) : (
