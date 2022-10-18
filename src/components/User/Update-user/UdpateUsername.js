@@ -6,11 +6,20 @@ const UdpateUsername = () => {
   const dispatch = useDispatch();
   const firstname = useSelector((state) => state.user.firstName);
   const lastname = useSelector((state) => state.user.lastName);
+  const [editFotm, setEditGptm] = useState(false);
   const [updateFirstname, setUpdateFirstname] = useState("");
   const [updateLastname, setUpdateLastname] = useState("");
   // const  = useSelector(state => state.user.email)
 
-  const submitHandler = () => {};
+  const resetForm = () => {
+    setUpdateFirstname("");
+    setUpdateLastname("");
+    setEditGptm(false);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
 
   const firstnameHandler = (e) => {
     setUpdateLastname(e.target.value);
@@ -46,7 +55,9 @@ const UdpateUsername = () => {
         <button className={classes.btn} type="submit">
           Save
         </button>
-        <button className={classes.btn}>Cancel</button>
+        <button className={classes.btn} onClick={resetForm}>
+          Cancel
+        </button>
       </div>
     </form>
   );
