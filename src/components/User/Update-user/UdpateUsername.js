@@ -3,18 +3,18 @@ import classes from "./UpdateUsername.module.css";
 import { useSelector, useDispatch } from "react-redux";
 
 const UdpateUsername = () => {
-  const dispatch = useDispatch();
-  const firstname = useSelector((state) => state.user.firstName);
-  const lastname = useSelector((state) => state.user.lastName);
-  const [editFotm, setEditGptm] = useState(false);
+  const [editFotm, setEditForm] = useState(false);
   const [updateFirstname, setUpdateFirstname] = useState("");
   const [updateLastname, setUpdateLastname] = useState("");
-  // const  = useSelector(state => state.user.email)
+  const token = useSelector((state) => state.login.token);  
+  const firstname = useSelector((state) => state.user.firstName);
+  const lastname = useSelector((state) => state.user.lastName);
+  const dispatch = useDispatch();
 
   const resetForm = () => {
     setUpdateFirstname("");
     setUpdateLastname("");
-    setEditGptm(false);
+    setEditForm(false);
   };
 
   const submitHandler = (e) => {
