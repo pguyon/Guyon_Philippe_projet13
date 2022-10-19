@@ -6,9 +6,9 @@ const UdpateUsername = () => {
   const [editFotm, setEditForm] = useState(false);
   const [updateFirstname, setUpdateFirstname] = useState("");
   const [updateLastname, setUpdateLastname] = useState("");
-  const token = useSelector((state) => state.login.token);  
-  const firstname = useSelector((state) => state.user.firstName);
-  const lastname = useSelector((state) => state.user.lastName);
+  const token = useSelector((state) => state.login.token);
+//   const firstname = useSelector((state) => state.user.firstName);
+//   const lastname = useSelector((state) => state.user.lastName);
   const dispatch = useDispatch();
 
   const resetForm = () => {
@@ -22,7 +22,7 @@ const UdpateUsername = () => {
   };
 
   const firstnameHandler = (e) => {
-    setUpdateLastname(e.target.value);
+    setUpdateFirstname(e.target.value);
   };
 
   const lastnameHandler = (e) => {
@@ -37,8 +37,8 @@ const UdpateUsername = () => {
           type="text"
           id="firstname"
           onChange={firstnameHandler}
-          defaultValue={firstname}
-          label="Change firstname"
+          value={updateFirstname}
+          label="firstname"
         />
 
         <input
@@ -46,8 +46,8 @@ const UdpateUsername = () => {
           type="text"
           id="lastname"
           onChange={lastnameHandler}
-          defaultValue={lastname}
-          label="Change lastname"
+          value={updateLastname}
+          label="lastname"
         />
       </div>
 
@@ -55,7 +55,10 @@ const UdpateUsername = () => {
         <button className={classes.btn} type="submit">
           Save
         </button>
-        <button className={classes.btn} onClick={resetForm}>
+        <button className={classes.btn} onClick={()=> {
+            resetForm();
+            setEditForm(false)
+        }}>
           Cancel
         </button>
       </div>

@@ -20,6 +20,7 @@ export const userLogin = async (email, password) => {
     const token = await response.data.body.token;
     if (response.status === 200) {
       return token;
+      
     }
   } catch (error) {
     console.log(error);
