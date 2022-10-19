@@ -3,12 +3,13 @@ import classes from "./UpdateUsername.module.css";
 import { useSelector, useDispatch } from "react-redux";
 
 const UdpateUsername = () => {
+    const firstname = useSelector((state) => state.user.firstName);
+    const lastname = useSelector((state) => state.user.lastName);
   const [editFotm, setEditForm] = useState(false);
   const [updateFirstname, setUpdateFirstname] = useState("");
   const [updateLastname, setUpdateLastname] = useState("");
   const token = useSelector((state) => state.login.token);
-//   const firstname = useSelector((state) => state.user.firstName);
-//   const lastname = useSelector((state) => state.user.lastName);
+
   const dispatch = useDispatch();
 
   const resetForm = () => {
@@ -39,6 +40,7 @@ const UdpateUsername = () => {
           onChange={firstnameHandler}
           value={updateFirstname}
           label="firstname"
+          placeholder={firstname}
         />
 
         <input
@@ -48,6 +50,7 @@ const UdpateUsername = () => {
           onChange={lastnameHandler}
           value={updateLastname}
           label="lastname"
+          placeholder={lastname}
         />
       </div>
 
@@ -55,10 +58,13 @@ const UdpateUsername = () => {
         <button className={classes.btn} type="submit">
           Save
         </button>
-        <button className={classes.btn} onClick={()=> {
+        <button
+          className={classes.btn}
+          onClick={() => {
             resetForm();
-            setEditForm(false)
-        }}>
+            setEditForm(false);
+          }}
+        >
           Cancel
         </button>
       </div>
