@@ -12,6 +12,8 @@ function Profile() {
     if (!isLogged) return navigate("/login");
   }, [isLogged, navigate]);
 
+  
+
   return (
     <main className={classes.main}>
       <h2>Welcome back</h2>      

@@ -19,8 +19,8 @@ export const userLogin = async (email, password) => {
     });
     const token = await response.data.body.token;
     if (response.status === 200) {
+      localStorage.setItem("user", token);
       return token;
-      
     }
   } catch (error) {
     console.log(error);
@@ -61,20 +61,18 @@ export const userProfile = async (token) => {
  * @param {string} - the token that is returned from the login function
  * @returns The response.data.body is being returned.
  */
-export const userUpdate = async (firstName, lastName, token) => {
-  const config = {
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
+export const userUpdate = async (token, firstName, lastName) => {
   try {
-    const response = await instance.put("/profile", {
-      config,
+    const response = await instance("/profile", {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       data: JSON.stringify({ firstName, lastName }),
     });
+
     if (response.status === 200) {
       return response.status;
     }

@@ -15,7 +15,7 @@ export const loginSlice = createSlice({
     },
     logout(state) {
       state.isLogged = false;
-      state.token = "";
+      state.token = localStorage.removeItem('user');
     },
   },
 });

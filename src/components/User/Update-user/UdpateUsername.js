@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import classes from "./UpdateUsername.module.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { userUpdate } from "../../../services/authService";
 import { updateUserProfile } from "../../../store/slice/userSlice";
 
 const UdpateUsername = () => {
-  //   const firstname = useSelector((state) => state.user.firstName);
-  //   const lastname = useSelector((state) => state.user.lastName);
-  //   const [editFotm, setEditForm] = useState(false);
   const [updateFirstname, setUpdateFirstname] = useState("");
   const [updateLastname, setUpdateLastname] = useState("");
-  const token = useSelector((state) => state.login.token);
-
+  const token = localStorage.getItem("user");
   const dispatch = useDispatch();
 
   const resetForm = () => {
@@ -21,12 +17,12 @@ const UdpateUsername = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const update = await userUpdate(updateFirstname, updateLastname, token);
+    const update = await userUpdate(token, updateFirstname, updateLastname);
     if (update) {
       dispatch(
         updateUserProfile({
-          firstname: updateFirstname,
-          lastname: updateLastname,
+          firstName: updateFirstname,
+          lastName: updateLastname,
         })
       );
     }
