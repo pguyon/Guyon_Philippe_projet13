@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import classes from "./UpdateUsername.module.css";
 import { useSelector, useDispatch } from "react-redux";
+import { userUpdate } from "../../../services/authService";
+import { updateUserProfile } from "../../../store/slice/userSlice";
 
 const UdpateUsername = () => {
-    const firstname = useSelector((state) => state.user.firstName);
-    const lastname = useSelector((state) => state.user.lastName);
-  const [editFotm, setEditForm] = useState(false);
+  //   const firstname = useSelector((state) => state.user.firstName);
+  //   const lastname = useSelector((state) => state.user.lastName);
+  //   const [editFotm, setEditForm] = useState(false);
   const [updateFirstname, setUpdateFirstname] = useState("");
   const [updateLastname, setUpdateLastname] = useState("");
   const token = useSelector((state) => state.login.token);
@@ -15,11 +17,20 @@ const UdpateUsername = () => {
   const resetForm = () => {
     setUpdateFirstname("");
     setUpdateLastname("");
-    setEditForm(false);
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
+    const update = await userUpdate(updateFirstname, updateLastname, token);
+    if (update) {
+      dispatch(
+        updateUserProfile({
+          firstname: updateFirstname,
+          lastname: updateLastname,
+        })
+      );
+    }
+    resetForm();
   };
 
   const firstnameHandler = (e) => {
@@ -40,7 +51,6 @@ const UdpateUsername = () => {
           onChange={firstnameHandler}
           value={updateFirstname}
           label="firstname"
-          placeholder={firstname}
         />
 
         <input
@@ -50,7 +60,6 @@ const UdpateUsername = () => {
           onChange={lastnameHandler}
           value={updateLastname}
           label="lastname"
-          placeholder={lastname}
         />
       </div>
 
@@ -58,13 +67,7 @@ const UdpateUsername = () => {
         <button className={classes.btn} type="submit">
           Save
         </button>
-        <button
-          className={classes.btn}
-          onClick={() => {
-            resetForm();
-            setEditForm(false);
-          }}
-        >
+        <button className={classes.btn} onClick={resetForm}>
           Cancel
         </button>
       </div>
