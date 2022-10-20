@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import classes from "./UpdateUsername.module.css";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { userUpdate } from "../../../services/authService";
 import { updateUserProfile } from "../../../store/slice/userSlice";
 
 const UdpateUsername = () => {
+  const firstname = useSelector((state) => state.user.firstName);
+  const lastname = useSelector((state) => state.user.lastName);
   const [updateFirstname, setUpdateFirstname] = useState("");
   const [updateLastname, setUpdateLastname] = useState("");
   const token = localStorage.getItem("user");
@@ -45,9 +47,8 @@ const UdpateUsername = () => {
           type="text"
           id="firstname"
           onChange={firstnameHandler}
-          value={updateFirstname}
           label="firstname"
-          placeholder="Firstname"
+          placeholder={firstname}
         />
 
         <input
@@ -55,9 +56,8 @@ const UdpateUsername = () => {
           type="text"
           id="lastname"
           onChange={lastnameHandler}
-          value={updateLastname}
           label="lastname"
-          placeholder="Lastname"
+          placeholder={lastname}
         />
       </div>
 
