@@ -64,6 +64,9 @@ const Login = () => {
           <button className={classes["sign-in-button"]} type="submit">
             Sign In
           </button>
+          {isError && (
+            <div className={classes.error}>Wrong password or email</div>
+          )}
         </form>
       </section>
     </main>
