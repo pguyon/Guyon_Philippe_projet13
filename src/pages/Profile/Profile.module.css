@@ -1,5 +1,11 @@
 .main{
-    background-color: #E0E6ED;
-    /* height: 750px; */
+    background-color: #E0E6ED;    
     padding: 15px 0;
+}
+
+.main h1 {
+    width: 60%;
+    margin: auto;
+    font-size: 24px;
+    margin-top: 15px;
 }

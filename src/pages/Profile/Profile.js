@@ -18,7 +18,7 @@ function Profile() {
 
   return (
     <main className={classes.main}>
-      <h2>Welcome back {firstname} {lastname}</h2>      
+      <h1>Welcome back {firstname} {lastname}</h1>      
       <UdpateUsername />
       <ProfileBalance />
     </main>
