@@ -47,6 +47,7 @@ const UdpateUsername = () => {
           onChange={firstnameHandler}
           value={updateFirstname}
           label="firstname"
+          placeholder="Firstname"
         />
 
         <input
@@ -56,6 +57,7 @@ const UdpateUsername = () => {
           onChange={lastnameHandler}
           value={updateLastname}
           label="lastname"
+          placeholder="Lastname"
         />
       </div>
 

@@ -1,7 +1,10 @@
 .main {
     width: 90%;
     margin:auto;    
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 550px;
 }
 
 .main-balance {

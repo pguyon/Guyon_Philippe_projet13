@@ -29,3 +29,9 @@
     cursor: pointer;
     margin: 10px;
 }
+
+@media screen and (max-width: 450px){
+    .input-main{
+       flex-direction: column;
+    }
+}
