@@ -19,12 +19,16 @@ const UdpateUsername = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const update = await userUpdate(token, updateFirstname, updateLastname);
+
+    const inputFirstname = updateFirstname === "" ? firstname : updateFirstname;
+    const inputLastname = updateLastname === "" ? lastname : updateLastname;
+
+    const update = await userUpdate(token, inputFirstname, inputLastname);
     if (update) {
       dispatch(
         updateUserProfile({
-          firstName: updateFirstname,
-          lastName: updateLastname,
+          firstName: inputFirstname,
+          lastName: inputLastname,
         })
       );
     }
