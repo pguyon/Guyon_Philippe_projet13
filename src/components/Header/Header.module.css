@@ -30,15 +30,17 @@
 
 .main-nav-item {
   text-decoration: none;
-  margin-right: 0.5rem;
-  cursor: pointer;
+  margin-right: 0.5rem;  
   font-weight: bold;
 }
 .main-nav-item span {
   margin-left: 5px;
+  cursor: pointer;
 }
 
-.main-nav-item:hover {
+
+
+.main-nav-item span:hover {
   text-decoration: underline;
 }
 

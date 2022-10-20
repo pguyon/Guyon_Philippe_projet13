@@ -9,9 +9,8 @@ import { logout } from "../../store/slice/loginSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const Header = () => {
-  
   const isLogged = useSelector((state) => state.login.isLogged);
-  const firstname = useSelector((state) => state.user.firstName)
+  const firstname = useSelector((state) => state.user.firstName);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,7 +34,7 @@ const Header = () => {
           <FontAwesomeIcon icon={faCircleUser} />
           <span className={classes.firstname}>{firstname}</span>
           <FontAwesomeIcon icon={faSignOut} />
-          <span className={classes["main-nav-item"]}>Sign out</span>
+          <span>Sign out</span>
         </div>
       ) : (
         <Link to="/login" className={classes["main-nav-item"]}>
