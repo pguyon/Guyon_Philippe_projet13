@@ -176,6 +176,119 @@ paths:
             description: Invalid Fields
           '500':
             description: Internal Server Error
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction details Module
+      summary: Transaction details API
+      description: Add new transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: path
+          name: accountId
+          description: user account id
+          type: number
+          required: true
+        - in: path
+          name: transactionId
+          type: number
+          required: true
+        - in: body
+          name: body
+          description: Create transaction
+          required: true
+          schema:
+            $ref: "#/definitions/Transaction"
+          
+      produces:
+        - application/json
+      responses:
+        "201":
+          description: User transaction retrieved successully
+          schema:
+            $ref: "#/definitions/TransactionResponse"
+        "400":
+          description: Invalid Fields
+        "500":
+          description: Internal Server Error
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction details Module
+      summary: Transaction details API
+      description: Updating a transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: path
+          name: accountId
+          description: user account id
+          type: number
+          required: true
+        - in: path
+          name: transactionId
+          type: number
+          required: true
+        - in: body
+          name: body
+          description: Update a transaction
+          required: true
+          schema:
+            $ref: "#/definitions/Transaction"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: transaction updated successully
+          schema:
+            $ref: "#/definitions/TransactionResponse"
+        "400":
+          description: Invalid Fields
+        "500":
+          description: Internal Server Error
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction details Module
+      summary: Transactions detail API
+      description: Deleting a transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: path
+          name: accountId
+          description: user account id
+          type: number
+          required: true
+        - in: path
+          name: transactionId
+          type: number
+          required: true
+
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: transaction deleted successully
+          schema:
+            $ref: "#/definitions/TransactionResponse"
+        "400":
+          description: Invalid Fields
+        "500":
+          description: Internal Server Error
 securityDefinitions:
   Bearer:
     type: apiKey
