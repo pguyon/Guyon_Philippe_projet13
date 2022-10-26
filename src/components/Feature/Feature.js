@@ -8,6 +8,12 @@ import classes from "./Feature.module.css";
 const Feature = (props) => {
   let image = "";
 
+
+/* A switch statement that is checking the value of the img property of the element object. If the
+value is pictureChat, it will set the image variable to the chat variable. If the value is
+pictureMoney, it will set the image variable to the money variable. If the value is pictureSecurity,
+it will set the image variable to the security variable. If the value is none of these, it will do
+nothing. */
   switch (props.element.img) {
     case "pictureChat":
       image = chat;

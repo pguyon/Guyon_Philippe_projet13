@@ -17,10 +17,19 @@ const UdpateUsername = () => {
     setUpdateLastname("");
   };
 
+  /**
+   * It's a function that takes in an event, prevents the default action, and then updates the user's
+   * profile.
+   * @param e - event
+   */
   const submitHandler = async (e) => {
     e.preventDefault();
 
+    /*if `updateFirstname` is an empty string, then set
+    `inputFirstname` to `firstname`, otherwise set `inputFirstname` to `updateFirstname`. */
     const inputFirstname = updateFirstname === "" ? firstname : updateFirstname;
+    /*If `updateLastname` is an empty string, then set `inputLastname` to
+   `lastname`, otherwise set `inputLastname` to `updateLastname`. */
     const inputLastname = updateLastname === "" ? lastname : updateLastname;
 
     const update = await userUpdate(token, inputFirstname, inputLastname);
